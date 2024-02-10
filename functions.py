@@ -45,6 +45,22 @@ Write a Python function called pascal() that prints out the first n rows of Pasc
 The function accepts the number n, the number of rows to print
 Note : Pascal's triangle is an arithmetic and geometric figure first imagined by Blaise Pascal. Each number is the two numbers above it added together.
 '''
-
-def pascal(n, rows):
+def pascal(n):   
+    # Function to calculate binomial coefficient
+    def binomial_coefficient(n, k):
+        if k == 0 or k == n:
+            return 1
+        return binomial_coefficient(n - 1, k - 1) + binomial_coefficient(n - 1, k)
     
+    # Loop to print each row of Pascal's triangle
+    for i in range(n):
+        # Print leading spaces to center the triangle
+        print(" " * (n - i - 1), end="")
+        
+        # Print elements of the current row
+        for j in range(i + 1):
+            print(binomial_coefficient(i, j), end=" ")
+        print()
+
+
+pascal(2)
